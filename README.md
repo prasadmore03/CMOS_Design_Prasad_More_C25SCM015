@@ -83,7 +83,37 @@ NMOS Structure:
 
 - Threshold voltage (Vth) is the exact gate voltage at which a strong inversion layer forms, creating a conducting channel between source and drain.
 
+## Day1_Lec3 : Strong Inversion and Threshold Voltage
 
+### Strong Inversion:
+- When Vgs exceeds the threshold voltage Vt, enough electrons are attached to the surface of the p substrate.
+- The surface electron concentration becomes higher than the hole concentration, effectively turning the surface into n-type (inversion layer).
 
+- A continuous conductive channel forms between source and drain, allowing current to flow.
+- The Vgs voltage at which strong inversion occurs is called threshold voltage Vt. <br/>
 
+<img width="578" height="309" alt="image" src="https://github.com/user-attachments/assets/d07e3fa0-b9ab-440f-80ea-f934cc88ddd7" /> <br/>
+
+- There will be no change in depletion layer width but there will be increase in channel width.
+- Electrons from heavily doped n+ source region are drawn in region under gate 'G'.
+- So now due to continuous n-channel formation from S-D, whose conductivity is modulated by 'Vgs'. <br/>
+
+### Body Terminal:
+<img width="843" height="345" alt="image" src="https://github.com/user-attachments/assets/43bed69e-a448-4709-a232-eabb9bc02eb8" /> <br/>
+
+- When Vsb>0 (NMOS), the source–body junction becomes more reverse biased.
+- The depletion region widens, increasing depletion charge under the gate.
+- THe Threshold voltage Vt increases (Body Effect).
+- A higher Vgs is required to achieve strong inversion.
+- Hence, channel formation is delayed and the NMOS becomes harder to turn ON.
+  
+## Day1_Lec4 : Threshold voltage with positive substrate potential
+
+<img width="1894" height="949" alt="image" src="https://github.com/user-attachments/assets/8cd30beb-b5af-4e01-bb6d-230e18f09c6c" /> <br/>
+
+* When **Vsb = 0**, strong inversion occurs at **Vgs = Vt0**, and the channel forms normally.
+* When **Vsb > 0**, the source–bulk junction becomes more reverse biased, increasing the depletion width near the source.
+* As a result, the threshold voltage increases (Vt = Vt0 + ΔV), so a higher **Vgs** is required to achieve strong inversion — this is called the body effect.
+
+  
 
