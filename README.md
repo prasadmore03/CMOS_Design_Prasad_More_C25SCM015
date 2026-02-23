@@ -218,3 +218,104 @@ NMOS Structure:
  ## Introduction to SPICE
  ## Day1_Lec10 : Basic SPICE setup
  
+<img width="869" height="449" alt="image" src="https://github.com/user-attachments/assets/3ee06dcc-7ad8-4f37-99f9-d93c912cff13" />
+
+Some parameters are constants that are directly provided by the foundry in the technology model files, so we do not need to derive them manually. These fixed technology parameters are the ones highlighted in yellow.
+
+<img width="866" height="448" alt="image" src="https://github.com/user-attachments/assets/2849e2eb-9ef1-4253-ae1c-b6aafc15228c" />
+
+<img width="867" height="463" alt="image" src="https://github.com/user-attachments/assets/32cffd00-8a97-45f6-87ac-fa8f5f0cc75a" />
+
+- When we provide the SPICE model parameters along with the SPICE netlist to the simulator, it generates the device characteristics such as Id vs Vds for different values of Vgs.
+
+- In the SPICE netlist, the MOSFET must be defined in a specific format so that the SPICE engine can interpret it correctly. The circuit equivalent of the given MOSFET is represented as shown below.
+
+<img width="833" height="418" alt="image" src="https://github.com/user-attachments/assets/ac65b036-c43c-4694-b868-1c972a0ab9e5" />
+
+ ## Day1_Lec11 : Circuit description in SPICE syntax
+- Steps to write SPICE netlist syntax for particular circuit:
+- Nodes:
+
+<img width="408" height="303" alt="image" src="https://github.com/user-attachments/assets/cdd35bf9-fea9-4d43-a331-f42457237ab3" />
+
+- Give names to node
+- Write netlist code for specific device i.e. mosfet or resistor
+- mosfet --> 4 terminals, resistor --> 2 terminals
+- mosfet:
+<img width="821" height="254" alt="image" src="https://github.com/user-attachments/assets/c08c488e-035b-4c70-8105-914ceafd145b" />
+-drain:
+<img width="809" height="254" alt="image" src="https://github.com/user-attachments/assets/35c3a789-11e6-45c3-92e8-9e623ce1c01a" />
+-gate:
+<img width="818" height="250" alt="image" src="https://github.com/user-attachments/assets/4a986fcb-40f9-452d-91bf-bab52d74fbc7" />
+-source:  
+<img width="808" height="250" alt="image" src="https://github.com/user-attachments/assets/3b665984-3e2a-49f7-b5d8-bf76aaea467e" />
+-substrate:
+<img width="815" height="251" alt="image" src="https://github.com/user-attachments/assets/87442ef6-2371-4905-b8ce-22b5fd69d9f9" />
+- name of mosfet:
+<img width="818" height="258" alt="image" src="https://github.com/user-attachments/assets/164eea59-b51e-4fe6-a5c9-4b19d96464e8" />
+- width:
+<img width="815" height="250" alt="image" src="https://github.com/user-attachments/assets/b887cade-24a9-41af-ab78-1e96ce22af68" />
+-length:
+<img width="817" height="251" alt="image" src="https://github.com/user-attachments/assets/3433ce9a-0282-4a79-a386-03fb2c88c238" />
+
+- So this was long channel mosfet.
+
+-netlist code for Resistor:
+- naming resistor:
+<img width="824" height="240" alt="image" src="https://github.com/user-attachments/assets/c891480a-8f41-47c7-bc2c-b181ab5e2c11" />
+- Vdd :
+<img width="827" height="255" alt="image" src="https://github.com/user-attachments/assets/6e5650cb-bc8a-482a-bc94-1356b53dce98" />
+- Vin:
+<img width="816" height="246" alt="image" src="https://github.com/user-attachments/assets/f3c3cf86-da1b-4a6d-b9c6-df914718ac18" />
+
+Total netlist code for the 2 components is:
+<img width="399" height="139" alt="image" src="https://github.com/user-attachments/assets/f4de55e6-63bf-4ebf-b69d-3e63f1ad1f9d" />
+
+ ## Day1_Lec12 : Define technology parameters
+ - Now, we need to identify the model for this specific NMOS device. The required model parameters are provided by the foundry in the technology file, which simplifies accurate device modeling. The NMOS model can be found in the technology library under its corresponding model name, and this file is included in the SPICE netlist using the .include statement so the simulator can access all process parameters.
+
+<img width="427" height="410" alt="image" src="https://github.com/user-attachments/assets/1f863f79-6acc-44a5-9c1f-e884b3ce0244" />
+
+- Inside the model definition brackets, all the technology parameters are specified, and a similar structure exists for the PMOS model as well. We then place this packaged model file in a .mod file and reference it in the top-level SPICE netlist so the simulator can use the defined device models.
+
+ <img width="884" height="492" alt="image" src="https://github.com/user-attachments/assets/183c3ed2-bb79-48e5-ab6a-5a7cc798025d" />
+
+- call this file into netlist code:
+<img width="455" height="176" alt="image" src="https://github.com/user-attachments/assets/b3add566-1062-40da-b00c-92e62d3b6afe" />
+
+- complete netlist code:
+
+<img width="514" height="465" alt="image" src="https://github.com/user-attachments/assets/c4c0ea97-9444-44ce-91e3-a82ca42ae5a5" />
+
+- Now, we need to perform a sweep of Vgs and Vds in the SPICE simulation to analyze the device characteristics.
+
+ ## Day1_Lec13 : First SPICE simulation:
+- open cloud lab using vs code.
+- type:
+  cd /workspaces/vsd-cmos
+  ls -ltr
+  cd /workspaces/vsd-cmos/sky130CircuitDesignWorkshop/design
+  ngspice day1_nfet_idvds_L2_W5.spice
+
+- Inside the sky130_fd_pr directory, we can find subfolders such as cells, models, and tech files. Within the cells folder, nfet and pfet device cells are available, which we will use for simulation.
+
+- Inside the nfet directory, SPICE libraries for different process corners are provided. We typically select one corner file (for example, the typical corner) that contains all the required model parameters for that process.
+
+- The library also specifies predefined W and L values. For simulation purposes, we choose any valid W and L combination available in the library.
+
+- Next, we navigate to models → lib.spice, where the corner library files for nfet and pfet are defined, including typical, slow-fast (SF), and fast-fast (FF) corners.
+
+- In the design folder (for example, day1 file), the voltage sources are defined such that Vdd is swept from 0 to 1.8 V with a step of 0.1 V, and Vgs is swept from 0 to 1.8 V with a step of 0.2 V.
+
+- After running the SPICE simulation, we obtain the Id vs Vds characteristics for different values of Vgs. To check the exact value of Id at a particular Vds and Vgs point, we can simply left-click on the waveform plot.
+  
+ <img width="1027" height="680" alt="image" src="https://github.com/user-attachments/assets/05a57b9d-27e0-49ca-b046-1f443100b3df" />
+
+ <img width="1029" height="681" alt="image" src="https://github.com/user-attachments/assets/608326e3-3299-4789-a7ef-792bc8ac3209" />
+
+ <img width="876" height="674" alt="image" src="https://github.com/user-attachments/assets/c446d0aa-f8b4-4445-8255-5eca865dce9b" />
+
+
+
+
+
