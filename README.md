@@ -202,3 +202,19 @@ NMOS Structure:
 
 - Pinch off region --> no channel near drain region
 - Pinch off cndition --> Vgs-Vds <= Vt
+
+## Day1_Lec9 : Drain current model for saturation region of operation
+- In the saturation region, the channel voltage at the pinch-off point remains fixed at (Vgs − Vt), and the drain current ideally becomes independent of Vds. To derive the drain current equation in saturation, we substitute Vds = (Vgs − Vt) into the linear region current expression.
+
+ <img width="891" height="446" alt="image" src="https://github.com/user-attachments/assets/0aaa2c20-d6ff-47eb-9868-f04783c69cb4" />
+
+ <img width="851" height="437" alt="image" src="https://github.com/user-attachments/assets/999b028e-aa3e-41ad-9fb3-65e2ab791249" />
+
+ <img width="629" height="123" alt="image" src="https://github.com/user-attachments/assets/c59560f6-2cf0-4789-92ae-6e0869c70752" />
+
+ 
+ - From the ideal saturation current equation, the MOSFET appears to behave like a perfect current source, with Id independent of Vds. However, in practice, as Vds increases further, the depletion region at the drain widens, effectively reducing the channel length. Because of this channel length reduction, Id slightly increases with Vds even in saturation. This effect is known as channel length modulation.
+
+ ## Introduction to SPICE
+ ## Day1_Lec10 : Basic SPICE setup
+ 
