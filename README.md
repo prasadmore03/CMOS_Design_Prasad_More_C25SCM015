@@ -242,33 +242,55 @@ Some parameters are constants that are directly provided by the foundry in the t
 - Write netlist code for specific device i.e. mosfet or resistor
 - mosfet --> 4 terminals, resistor --> 2 terminals
 - mosfet:
-<img width="821" height="254" alt="image" src="https://github.com/user-attachments/assets/c08c488e-035b-4c70-8105-914ceafd145b" />
+  
+<img width="821" height="254" alt="image" src="https://github.com/user-attachments/assets/c08c488e-035b-4c70-8105-914ceafd145b" />br/>
+
 -drain:
-<img width="809" height="254" alt="image" src="https://github.com/user-attachments/assets/35c3a789-11e6-45c3-92e8-9e623ce1c01a" />
+
+<img width="809" height="254" alt="image" src="https://github.com/user-attachments/assets/35c3a789-11e6-45c3-92e8-9e623ce1c01a" /><br/>
+
 -gate:
-<img width="818" height="250" alt="image" src="https://github.com/user-attachments/assets/4a986fcb-40f9-452d-91bf-bab52d74fbc7" />
+
+<img width="818" height="250" alt="image" src="https://github.com/user-attachments/assets/4a986fcb-40f9-452d-91bf-bab52d74fbc7" /><br/>
+
 -source:  
-<img width="808" height="250" alt="image" src="https://github.com/user-attachments/assets/3b665984-3e2a-49f7-b5d8-bf76aaea467e" />
+
+<img width="808" height="250" alt="image" src="https://github.com/user-attachments/assets/3b665984-3e2a-49f7-b5d8-bf76aaea467e" /><br/>
+
 -substrate:
-<img width="815" height="251" alt="image" src="https://github.com/user-attachments/assets/87442ef6-2371-4905-b8ce-22b5fd69d9f9" />
+
+<img width="815" height="251" alt="image" src="https://github.com/user-attachments/assets/87442ef6-2371-4905-b8ce-22b5fd69d9f9" /><br/>
+
 - name of mosfet:
-<img width="818" height="258" alt="image" src="https://github.com/user-attachments/assets/164eea59-b51e-4fe6-a5c9-4b19d96464e8" />
+  
+<img width="818" height="258" alt="image" src="https://github.com/user-attachments/assets/164eea59-b51e-4fe6-a5c9-4b19d96464e8" /><br/>
+
 - width:
-<img width="815" height="250" alt="image" src="https://github.com/user-attachments/assets/b887cade-24a9-41af-ab78-1e96ce22af68" />
+  
+<img width="815" height="250" alt="image" src="https://github.com/user-attachments/assets/b887cade-24a9-41af-ab78-1e96ce22af68" /><br/>
+
 -length:
-<img width="817" height="251" alt="image" src="https://github.com/user-attachments/assets/3433ce9a-0282-4a79-a386-03fb2c88c238" />
+
+<img width="817" height="251" alt="image" src="https://github.com/user-attachments/assets/3433ce9a-0282-4a79-a386-03fb2c88c238" /><br/>
 
 - So this was long channel mosfet.
 
 -netlist code for Resistor:
+
 - naming resistor:
+ 
 <img width="824" height="240" alt="image" src="https://github.com/user-attachments/assets/c891480a-8f41-47c7-bc2c-b181ab5e2c11" />
+
 - Vdd :
+  
 <img width="827" height="255" alt="image" src="https://github.com/user-attachments/assets/6e5650cb-bc8a-482a-bc94-1356b53dce98" />
+
 - Vin:
+  
 <img width="816" height="246" alt="image" src="https://github.com/user-attachments/assets/f3c3cf86-da1b-4a6d-b9c6-df914718ac18" />
 
 Total netlist code for the 2 components is:
+
 <img width="399" height="139" alt="image" src="https://github.com/user-attachments/assets/f4de55e6-63bf-4ebf-b69d-3e63f1ad1f9d" />
 
  ## Day1_Lec12 : Define technology parameters
@@ -314,6 +336,24 @@ Total netlist code for the 2 components is:
  <img width="1029" height="681" alt="image" src="https://github.com/user-attachments/assets/608326e3-3299-4789-a7ef-792bc8ac3209" />
 
  <img width="876" height="674" alt="image" src="https://github.com/user-attachments/assets/c446d0aa-f8b4-4445-8255-5eca865dce9b" />
+
+ ## Day1_Lec14 : SPICE lab with Sky130 models:
+ - If we navigate to the models folder, we will find the all.spice file. When we open this file, it specifies the scaling information for device width and length. From this, we can observe that the W and L values are defined in microns.
+   
+all.spice file:
+
+<img width="1596" height="930" alt="image" src="https://github.com/user-attachments/assets/7c37814f-1804-49d6-b17e-ad75a05f671e" /><br/>
+
+sky130 file:
+
+<img width="1588" height="937" alt="image" src="https://github.com/user-attachments/assets/d1306f0c-5c58-4862-a40f-0f3e0bc6a1ab" /><br/>
+
+Note: From now on, I will be using a Virtual Machine for the simulations, as it is more convenient and easier to work with.
+
+## Day2: Velocity saturation and basics of CMOS inverter VTC
+## SPICE simulation for lower nodes and velocity saturation effect
+## Day2_lec15 : SPICE simulation for lower nodes:
+
 
 
 
