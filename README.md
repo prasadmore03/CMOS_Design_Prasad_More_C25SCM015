@@ -332,8 +332,10 @@ Total netlist code for the 2 components is:
 - After running the SPICE simulation, we obtain the Id vs Vds characteristics for different values of Vgs. To check the exact value of Id at a particular Vds and Vgs point, we can simply left-click on the waveform plot.
   
  <img width="1027" height="680" alt="image" src="https://github.com/user-attachments/assets/05a57b9d-27e0-49ca-b046-1f443100b3df" />
+ 
 
  <img width="1029" height="681" alt="image" src="https://github.com/user-attachments/assets/608326e3-3299-4789-a7ef-792bc8ac3209" />
+ 
 
  <img width="876" height="674" alt="image" src="https://github.com/user-attachments/assets/c446d0aa-f8b4-4445-8255-5eca865dce9b" />
 
@@ -354,8 +356,57 @@ Note: From now on, I will be using a Virtual Machine for the simulations, as it 
 ## SPICE simulation for lower nodes and velocity saturation effect
 ## Day2_lec15 : SPICE simulation for lower nodes:
 
+<img width="798" height="497" alt="image" src="https://github.com/user-attachments/assets/542b336c-8333-49f4-9935-8f0a95d4c9b7" />
 
+- The Id vs Vds plots for multiple Vgs values show three distinct regions of operation. For Vds < (Vgs − Vt), the device operates in the linear region where current rises almost linearly with Vds. When Vds exceeds (Vgs − Vt), the MOSFET enters saturation, where the current ideally becomes constant but exhibits a slight upward slope due to channel length modulation and velocity saturation effects. The bottom portion of the graph represents the cutoff region, where no channel is formed. This behavior corresponds to a long-channel MOSFET.
 
+- Next, we vary W and L while maintaining the same W/L ratio as before. From the ideal current equation, Id should remain the same because it depends on the ratio W/L. However, practically, especially in scaled devices, short-channel and second-order effects cause the current to deviate from the ideal expectation. The SPICE deck shown below reflects this case, where only W and L are changed and all other parameters remain unchanged.
 
+## Day2_lec16 : Drain current vs gate voltage for long and short channel device
+- Observation 1: 
 
+<img width="910" height="510" alt="image" src="https://github.com/user-attachments/assets/31e70cfa-0b3f-4043-8319-10ddd2cd55cf" />
+
+- If we examine the Id values at Vds = 2.5 V for different Vgs values, we observe a quadratic dependence of Id on Vgs in a long-channel device, as predicted by the square-law model. However, in a short-channel device, at the same Vds = 2.5 V, the drain current increases almost linearly with Vgs due to velocity saturation dominating the behavior.
+
+<img width="556" height="443" alt="image" src="https://github.com/user-attachments/assets/ea6ba614-e2a9-4196-9219-696b2aac61e0" />
+
+- Next, we plot Id versus Vgs by either sweeping Vds or by keeping Vds fixed at 2.5 V. In the SPICE syntax, the quantity written on the left-hand side is swept for every value specified on the right-hand side. For instance, for each value of Vdd, Vin is swept accordingly. The resulting plot shows a quadratic trend when Vds = 2.5 V for a long-channel device. Now, we repeat the same analysis for a short-channel device with L = 0.25 µm to observe the deviation from ideal quadratic behavior.
+
+<img width="912" height="515" alt="image" src="https://github.com/user-attachments/assets/9fbdc130-96fd-45b7-b040-4b3e1fcfe5c8" />
+
+## Day2_lec17 : Velocity saturation at lower and higher electric fields
+
+- For a short-channel device, the Id–Vgs characteristic shows a more linear trend as Vgs increases, mainly due to the velocity saturation effect.
+- Thus, in lower technology nodes, the MOSFET exhibits four regions of operation: Cutoff, Linear, Saturation, and Velocity Saturation.
+  
+<img width="899" height="490" alt="image" src="https://github.com/user-attachments/assets/7bb4ce10-8e38-4d8e-a45c-70347c9ac485" />
+
+- In velocity saturation, carrier velocity is related to the electric field by v = μE, where v is velocity, μ is mobility, and E is the electric field. Initially, velocity increases linearly with the electric field, but beyond a critical field, it saturates due to increased carrier scattering and reduced effective mobility. This effect becomes dominant in short-channel devices where high electric fields are present near the drain.
+
+<img width="896" height="500" alt="image" src="https://github.com/user-attachments/assets/f4c879c1-161e-4d27-9b7c-762677d4e1a7" />
+
+- Velocity saturation occurs at higher gate-to-source voltages, where the electric field in the channel becomes strong enough to drive carrier velocity to its saturation limit.
+
+<img width="853" height="412" alt="image" src="https://github.com/user-attachments/assets/a62f0a6d-4553-4a5d-b28e-d64dbc89fac4" />
+
+## Day2_lec18 : Velocity saturation drain current model
+
+- Since we are dealing with higher values of Vgs, we denote the overdrive voltage as Vgt = Vgs − Vt. The previously discussed drain current equation will be applied, and for small Vds values, the channel length modulation effect (λ) can be ignored for simplicity.
+
+- Another key technology parameter is Vdsat, which indicates the drain-to-source voltage at which the device begins to enter the velocity saturation region.
+
+<img width="867" height="453" alt="image" src="https://github.com/user-attachments/assets/c1b82173-5dda-4f70-a937-6104b8c94137" />
+
+<img width="897" height="464" alt="image" src="https://github.com/user-attachments/assets/df473c90-561a-4ea1-9422-08604c9832d4" />
+
+<img width="887" height="488" alt="image" src="https://github.com/user-attachments/assets/fed606c2-7246-4bd0-9f73-f09c9484bbfa" />
+
+<img width="887" height="502" alt="image" src="https://github.com/user-attachments/assets/0cbe9c34-f686-42b8-8ed8-8965fa2d8b2e" />
+
+- From the equation, it appears that if W is kept constant and L is reduced, the drain current Id should increase because Id is inversely proportional to L. However, in practical short-channel devices, this expected increase is not fully observed.
+
+- Observation 2 – For lower technology nodes, the saturation current is actually smaller instead of larger. This happens because velocity saturation causes the device to enter saturation at a lower Vds, limiting the carrier velocity and hence restricting the maximum achievable current. As a result, the peak current in short-channel (lower node) devices is lower compared to long-channel (higher node) devices, despite the reduced channel length.
+
+<img width="922" height="511" alt="image" src="https://github.com/user-attachments/assets/1cda506d-1974-4af4-94d3-f21c94e73b12" />
 
