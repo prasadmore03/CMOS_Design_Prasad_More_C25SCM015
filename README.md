@@ -585,3 +585,8 @@ nomenclature:
  PMOS is in cut-off region
 
 <img width="976" height="552" alt="image" src="https://github.com/user-attachments/assets/202c556f-5ba8-4467-95d4-eb8d54c16529" />
+
+## CMOS Switching threshold and dynamic simulations
+## Voltage transfer characteristics - SPICE simulations
+## Day3_Lec27 : SPICE deck creation for CMOS inverter
+
