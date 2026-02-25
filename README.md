@@ -410,3 +410,72 @@ Note: From now on, I will be using a Virtual Machine for the simulations, as it 
 
 <img width="922" height="511" alt="image" src="https://github.com/user-attachments/assets/1cda506d-1974-4af4-94d3-f21c94e73b12" />
 
+##  Day2_lec19 : Labs Sky130 Id-Vgs
+- Now, we will perform simulations for a lower technology node using the day2 design file. In this setup, the device dimensions are defined as L = 0.15 µm and W = 0.39 µm.
+
+- The resulting plot shows Id versus Vds for different values of Vgs. For smaller Vgs values, the characteristics follow a quadratic trend, while for higher Vgs values, the behavior becomes more linear due to velocity saturation effects.
+
+- To determine the peak current at Vgs = 1.8 V, simply left-click on the corresponding curve in the plot. The cursor indicates x ≈ 1.79505 V and y ≈ 0.00198232 A, which corresponds to a drain current of approximately 198 µA.
+
+<img width="908" height="470" alt="image" src="https://github.com/user-attachments/assets/b2fc1dbf-3abf-4278-b31d-83b53e829c92" />
+
+- Id vs Vgs:
+- In this case, we again use L = 0.15 µm and W = 0.39 µm. The drain-to-source voltage Vds is kept constant at 1.8 V, while Vgs is swept from 0 to 1.8 V in steps of 0.1 V.
+
+- From the resulting plot, it is evident that due to short-channel effects, the Id–Vgs characteristic shows a more linear trend at higher Vgs values, even though Vds is maintained constant.
+
+<img width="968" height="479" alt="image" src="https://github.com/user-attachments/assets/bcab6693-dfea-46db-aad7-7dbc448fc176" />
+
+## Day2_lec20 : Labs Sky130 Id-Vgs
+- We determine the threshold voltage (Vt) from the Id vs Vgs characteristic curve.
+
+- Vt is identified as the point where the drain current starts increasing sharply for a small change in Vgs.
+
+- To calculate it, we draw a tangent to the steep portion of the curve and find its intercept on the Vgs axis.
+
+- From the graph, the threshold voltage is approximately 0.76 V.
+
+<img width="634" height="581" alt="image" src="https://github.com/user-attachments/assets/9d7732a1-4146-4cad-a9e0-39b9f13dafc7" />
+
+## CMOS voltage transfer characteristics (VTC):
+## Day2_lec21 : MOSFET as a switch
+
+<img width="743" height="313" alt="image" src="https://github.com/user-attachments/assets/179bad44-e2a2-4e58-a4fd-58fb8a169a70" />
+
+<img width="1831" height="1080" alt="image" src="https://github.com/user-attachments/assets/49a714af-b83e-4068-8d9c-9cc143989c8b" />
+
+- A MOSFET used as a switch operates in two main states: OFF (open switch) and ON (closed switch), controlled by the gate voltage.
+
+- When Vgs is below the threshold voltage (Vt), the device remains in cutoff and behaves like an open switch, preventing current flow.
+
+- When Vgs is sufficiently higher than Vt, the MOSFET turns fully ON, offering very low channel resistance and acting like a closed switch.
+
+- In digital and switching applications, the device is intentionally driven completely ON or OFF to ensure efficient current control and minimal power loss, rather than operating in the amplification region.
+
+## Day2_lec22 : Introduction to standard MOS voltage current parameters
+
+- We analyze the CMOS circuit for both input conditions (Vin HIGH and Vin LOW) to understand its behavior, draw the Voltage Transfer Characteristics (VTC), and use that information to estimate the cell delay.
+
+<img width="961" height="498" alt="image" src="https://github.com/user-attachments/assets/56c5f6b3-8ec9-4ea6-a71e-5ce97e5c5127" />
+
+- When Vin is HIGH (equal to Vdd), the PMOS turns OFF and the NMOS turns ON. In this condition, a conduction path is formed between Vout and Vss, causing the load capacitor (CL) to discharge through the NMOS.
+
+- When Vin is LOW (equal to 0 V), the NMOS turns OFF and the PMOS turns ON. In this case, a conduction path is established between Vdd and Vout, allowing the load capacitor (CL) to charge through the PMOS.
+
+nomenclature:
+
+<img width="978" height="480" alt="image" src="https://github.com/user-attachments/assets/8fb8e668-aa41-4d00-bd5d-6086aac2ca59" />
+
+## Day2_lec23 : PMOS/NMOS drain current v/s drain voltage
+
+<img width="965" height="552" alt="image" src="https://github.com/user-attachments/assets/1529291f-9cf1-4178-b318-cd8bea2b520a" />
+
+- Since the NMOS source is grounded, the gate-to-source voltage of NMOS is equal to the input voltage (VGSN = Vin), and the output voltage is equal to VDS.
+
+- In the PMOS, the drain current flows in the opposite direction compared to NMOS, so with respect to the chosen NMOS reference direction, the PMOS drain current appears negative.
+
+<img width="647" height="355" alt="image" src="https://github.com/user-attachments/assets/ddd9631f-a37d-482d-b945-a5ee6f507ad1" />
+
+- When the gate voltage exceeds the threshold voltage, the transistor turns ON and current begins to flow. As the gate voltage increases further, the drain current also increases. The characteristic curve shows both the linear (triode) region and the saturation region of operation.
+
+- The PMOS exhibits similar behavior, but with opposite voltage polarity. Since both the voltage and current directions are reversed, its current–voltage characteristics appear in the negative quadrant. 
