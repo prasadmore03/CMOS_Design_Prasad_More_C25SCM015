@@ -1,4 +1,4 @@
-# CMOS_Design_Prasad_More_C25SCM015
+<img width="907" height="500" alt="image" src="https://github.com/user-attachments/assets/4a17d09d-9b8a-49b3-8fea-e44c24f501e7" /># CMOS_Design_Prasad_More_C25SCM015
 
 ## 1) Github codespaces for the CMOS circuit design on cloud with GUI and VNC
 stepwise guidlines to use this platform are as follows:
@@ -712,7 +712,130 @@ nomenclature:
    x0 = 4.04656e-09. y0 = 0.905634
   Therefore fall delay = 0.291ns
 
-  ## Static behaviour evaluation-CMOS inverter robustness-Switching Threshold
-  ## Day3_Lec30 : Switching Threshold, Vm
+## Static behaviour evaluation-CMOS inverter robustness-Switching Threshold
+## Day3_Lec30 : Switching Threshold, Vm
+
+  <img width="915" height="440" alt="image" src="https://github.com/user-attachments/assets/14051b20-31f0-48e9-ba4a-4b4e7dbe7fb4" />
+
+- Let us compare two CMOS inverters having different W/L ratios for PMOS and NMOS.
+
+- In both cases, the overall shape of the VTC curve remains the same.
+
+- The primary difference observed is a shift in the switching threshold voltage (Vm).
+
+- This indicates that changing the device sizing mainly affects the switching point, while the inverter characteristics remain consistent.
+
+- Hence, this demonstrates the robustness and reliability of the CMOS inverter design.
+
+<img width="920" height="470" alt="image" src="https://github.com/user-attachments/assets/788b6aa2-09f8-4ab0-9239-4bd48d5ce037" />
+
+- To determine the switching threshold voltage (Vm) in both cases, we draw a 45-degree line (Vin = Vout) on the VTC plot.
+
+- The point where this line intersects the VTC curve gives the value of Vm.
+
+- In the first case, the switching threshold is approximately 0.9 V.
+
+- In the second case, the switching threshold shifts to around 1.2 V.
+
+- This variation confirms that the switching threshold depends on the relative W/L ratios of the PMOS and NMOS transistors.
+
+<img width="913" height="474" alt="image" src="https://github.com/user-attachments/assets/889d9084-4529-4d33-8f59-926cb112f165" />
+
+- This region corresponds to the condition where both PMOS and NMOS operate in the saturation region.
+
+- In this state, both transistors conduct simultaneously, creating a direct current path from Vdd to ground.
+
+- As a result, significant current flows through the inverter.
+
+- This leads to higher power dissipation, making it a critical and potentially undesirable operating region.
+
+## Day3_Lec31 : Analytical expression of Vm as a function of (W/L)p and (W/L)n
+
+<img width="906" height="472" alt="image" src="https://github.com/user-attachments/assets/da2653d0-7c9b-4f18-bce0-47a6f6623b3a" />
+
+- Switching threshold (Vm) occurs when Idsn = −Idsp and Vin = Vout. Solving the current equations gives Vm = (R / (1 + R)) · Vdd, where R = (Kp · Vdsatp) / (Kn · Vdsatn) and depends on transistor (W/L) sizing.
+
+- When Wp = Wn, Vm ≈ 0.98 V. Increasing PMOS width (Wp > Wn) increases pull-up strength and shifts Vm higher (≈ 1.2 V), improving inverter switching balance and noise margin.
+
+## Day3_Lec32 : Analytical expression of (W/L)p and (W/L)n as a function of Vm
+
+<img width="908" height="489" alt="image" src="https://github.com/user-attachments/assets/ac2cffba-0fb9-4b3e-9cda-212539aff423" />
+
+- We want to determine the required W/L ratios of PMOS and NMOS such that the switching threshold Vm = Vdd/2 = 1.25 V (for Vdd = 2.5 V).
+
+- Since Vm is given, we work in reverse by applying the current equality condition at switching point:
+
+   Idsn = −Idsp
+
+- At Vm, both transistors are in saturation, so we use their saturation current equations.
+
+- Expanding the gain factors,
+   Kn = (1/2) μn Cox (Wn/Ln)
+   Kp = (1/2) μp Cox (Wp/Lp),
+   and equating the currents allows us to find the required Wp/Wn ratio.
+
+<img width="896" height="476" alt="image" src="https://github.com/user-attachments/assets/2395cd7b-913c-415c-91d6-59d2eb76b9e0" />
+
+- In the derived equation, all the terms on the right-hand side are constants, whose values can be obtained from the model files, except for Vm.
+
+- Once the desired Vm is specified, we can directly calculate the required W/L ratios.
+
+- This helps us determine how much (Wp/Lp) should be greater than (Wn/Ln) for a given switching threshold.
+
+- Next, we analyze the behavior of the CMOS inverter for different W/L ratios of PMOS and NMOS to observe the impact on its characteristics.
+
+## Day3_Lec33 : Static and dynamic simulation of CMOS inverter
+
+- For (W/L)n = (W/L)p = 1.5
   
+<img width="555" height="426" alt="image" src="https://github.com/user-attachments/assets/c60ee1d7-9f39-4bf8-b036-89d10b3c6a68" />
+
+- We can also determine the rise delay and fall delay using transient analysis, similar to the earlier procedure.
+
+- By applying a pulse input and observing the output waveform, we measure the time taken for the output to transition.
+
+- The rise delay corresponds to the time required for the output to transition from low to high.
+
+- The fall delay corresponds to the time required for the output to transition from high to low.
+
+<img width="907" height="500" alt="image" src="https://github.com/user-attachments/assets/b191a9b7-0193-41e7-8697-cfff1f86244e" />
+
+## Day3_Lec34 : Static and dynamic simulation of CMOS inverter with increased PMOS width
+
+- We perform SPICE simulations by increasing the width of the PMOS transistor and compare the results with the previous design.
+
+- As the PMOS becomes stronger (due to larger width), the switching threshold (Vm) shifts to a higher value.
+
+- A stronger PMOS provides higher charging current, which affects the inverter’s switching behavior.
+
+- It is observed that the rise delay decreases as the PMOS width increases.
+
+- This happens because a wider PMOS can charge the output load capacitor faster, reducing the time required for the output to transition from low to high.
+
+- The improvement in charging speed is due to the larger effective device area and higher drive strength.
+
+<img width="885" height="500" alt="image" src="https://github.com/user-attachments/assets/3beaba2e-2893-4cba-9f3e-6808885f2f10" />
+
+<img width="898" height="503" alt="image" src="https://github.com/user-attachments/assets/a16ac9ad-7056-4e77-a906-cbb904935e99" />
+
+<img width="886" height="497" alt="image" src="https://github.com/user-attachments/assets/34643654-bdb0-47c1-8a3c-5a932a180b8f" />
+
+<img width="903" height="504" alt="image" src="https://github.com/user-attachments/assets/04fbe246-174d-45df-a71d-8f3c77f5539c" />
+
+## Day3_Lec35 : Applications of CMOS inverter in clock network and STA
+
+- During fabrication, small variations may occur in the dimensions of PMOS and NMOS, causing slight deviations from the intended W/L ratios.
+
+- However, the CMOS inverter is highly robust, and these minor size variations do not significantly affect the switching threshold (Vm).
+
+- When (W/L)p ≈ 2(W/L)n, the rise delay and fall delay become approximately equal.
+
+- By simulation, we can fine-tune the exact sizing ratio required to achieve equal rise and fall delays.
+
+- This condition reflects the symmetry of the CMOS inverter, which is especially important in clock inverters or buffers.
+
+- For other logic cells, the sizing may be adjusted differently depending on the specific data path requirements.
+
+<img width="914" height="517" alt="image" src="https://github.com/user-attachments/assets/d4afd05b-e9a6-4c98-843e-d6dcfdab572e" />
+
 
