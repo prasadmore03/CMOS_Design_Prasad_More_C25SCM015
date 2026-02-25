@@ -590,3 +590,129 @@ nomenclature:
 ## Voltage transfer characteristics - SPICE simulations
 ## Day3_Lec27 : SPICE deck creation for CMOS inverter
 
+- We will now perform the VTC simulation, which requires creating a SPICE deck.
+
+- A SPICE deck is essentially the netlist, containing the connectivity details of all circuit components.
+
+- Since substrate connections are included, the CMOS inverter circuit is defined accordingly, where:
+
+  M1 represents the PMOS transistor
+  M2 represents the NMOS transistor
+
+- Next, we specify the component parameters, assuming identical W/L ratios for both NMOS and PMOS devices.
+
+  <img width="513" height="455" alt="image" src="https://github.com/user-attachments/assets/c96832fc-187c-4ef4-8a54-5c77b0e25668" />
+
+- We then define the required voltage sources, including Vin and Vdd, along with the expected Vout node.
+
+  <img width="602" height="449" alt="image" src="https://github.com/user-attachments/assets/74fa65a8-b547-4125-bbd5-d25601f1615c" />
+
+- The next step is to identify and label the nodes (a node is a junction where two or more components are connected).
+
+  <img width="612" height="389" alt="image" src="https://github.com/user-attachments/assets/268abe00-7a49-44c5-a52f-239ad0ae91a9" />
+
+
+- In the model file, voltage sources are defined between nodes, for example:
+
+- The input source is connected between node Vin and ground (0).
+
+- The supply Vdd is connected between node Vdd and ground (0).
+
+- After defining all components, parameters, and node connections, we can proceed to write the complete SPICE netlist (SPICE deck) for simulation.
+
+<img width="972" height="465" alt="image" src="https://github.com/user-attachments/assets/016cf4f6-7539-4665-93dc-0b8150e05aa3" />
+
+## Day3_Lec28 : SPICE simulation for CMOS inverter
+
+<img width="612" height="300" alt="image" src="https://github.com/user-attachments/assets/77bed8bc-33cc-438d-9c3d-ef66892f5d74" />
+
+<img width="591" height="274" alt="image" src="https://github.com/user-attachments/assets/130de4fa-17ee-4bc9-80be-6e4abc2fab54" />
+
+- The next step is to define the simulation commands in the SPICE deck.
+
+- We perform a DC sweep of the input gate voltage (Vin) from 0 V to 2.5 V, with an increment of 0.05 V.
+
+- Since our objective is to obtain the Voltage Transfer Characteristics (VTC), we sweep only the input voltage and observe the corresponding output voltage (Vout).
+
+- Finally, we include the model files in the SPICE deck.
+
+- These model files contain all the technology-specific parameters, such as threshold voltage, mobility, oxide thickness, and other device-related characteristics required for accurate simulation.
+
+<img width="955" height="489" alt="image" src="https://github.com/user-attachments/assets/6850ad9f-1976-465b-9048-13452f5472ff" />
+
+- We now perform the SPICE simulation using the following device dimensions:
+ Wn = Wp = 0.375 µm
+ Ln = Lp = 0.25 µm
+
+- This gives a ratio of:
+   Wn/Ln = Wp/Lp = 1.5
+
+- With these parameters defined in the netlist, the simulation is executed.
+
+- The resulting output is the Voltage Transfer Characteristic (VTC) curve corresponding to the specified device dimensions.
+
+<img width="614" height="467" alt="image" src="https://github.com/user-attachments/assets/2077f057-5ff2-4598-a2a5-032aebdb2ab8" />
+
+- Next, we perform the SPICE simulation with updated device dimensions:
+
+  Wn = 0.375 µm
+  Wp = 0.9375 µm
+  Ln = Lp = 0.25 µm
+
+- The corresponding aspect ratios are:
+
+   Wn/Ln = 1.5
+   Wp/Lp = 2.5
+
+- Here, the PMOS width is 2.5 times the NMOS width, making the PMOS stronger compared to the previous case.
+
+- With these parameters, we obtain a new VTC curve and can observe the shift in switching threshold due to the increased PMOS strength.
+
+<img width="617" height="465" alt="image" src="https://github.com/user-attachments/assets/57f9f3d0-24a4-4449-9d9a-aa1d64fffa03" />
+
+- On observing the previous VTC curve, we notice a slight leftward shift.
+
+- This shift occurs because, in that case, the NMOS was stronger than the PMOS (equal W/L but higher electron mobility).
+
+- Since NMOS has higher drive strength, it pulls the output down more effectively, causing the switching threshold to move toward a lower Vin value.
+
+## Day3_Lec28 : Labs Sky130 SPICE simulation for CMOS
+
+- We obtain the VTC characteristics of the CMOS inverter using both PFET and NFET devices.
+
+- In this design, the W/L ratio of the PMOS is approximately 2.33 times that of the NMOS, ensuring balanced drive strength.
+
+- A DC sweep of Vin from 0 V to 1.8 V is performed with a step size of 0.01 V, and the corresponding Vout is plotted to generate the VTC curve.
+
+<img width="560" height="276" alt="image" src="https://github.com/user-attachments/assets/cedca045-11b1-4160-8068-4756a1fb0a43" />
+
+
+- The switching threshold (Vm) is determined from the graph at the point where Vin = Vout.
+
+- For W/L ≈ 2.3, the switching threshold is observed to be approximately 0.876 V under the typical process corner.
+
+- Next, instead of a DC sweep, we apply a transient input pulse with the following parameters:
+  
+  Voltage swing: 0 V to 1 V
+  Initial delay: 0
+  Rise time: 0.1 ns
+  Fall time: 0.1 ns
+  Pulse width: 2 ns
+  Time period: 4 ns
+
+- With these pulse parameters defined, we proceed to run the transient simulation.
+<img width="558" height="276" alt="image" src="https://github.com/user-attachments/assets/f235f47c-67f2-46e9-8724-96f9a2f76334" />
+
+- So for rise delay and fall delay, we need to consider 50% of output curve i.e. at 0.9V; out-in.
+   x0 = 2.483213e-09, y0 = 0.899574
+   x0 = 2.17411e-09, y0 = 0.8987673
+  Therefore Rise delay = 2.482ns-2.174ns = 0.308ns
+
+   x0 = 4.33561e-09, y0 = 0.895468
+   x0 = 4.04656e-09. y0 = 0.905634
+  Therefore fall delay = 0.291ns
+
+  ## Static behaviour evaluation-CMOS inverter robustness-Switching Threshold
+  ## Day3_Lec30 : Switching Threshold, Vm
+  
+
