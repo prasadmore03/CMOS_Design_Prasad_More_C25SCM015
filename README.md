@@ -479,3 +479,109 @@ nomenclature:
 - When the gate voltage exceeds the threshold voltage, the transistor turns ON and current begins to flow. As the gate voltage increases further, the drain current also increases. The characteristic curve shows both the linear (triode) region and the saturation region of operation.
 
 - The PMOS exhibits similar behavior, but with opposite voltage polarity. Since both the voltage and current directions are reversed, its current–voltage characteristics appear in the negative quadrant. 
+
+## Day2_lec24 : Step1 – Convert PMOS gate-source-voltage to Vin
+
+- Although we analyzed various internal node voltages, from a user’s perspective only the external input (Vin) and output (Vout) are observable.
+
+- Using Vin and Vout, we plot the Voltage Transfer Characteristics (VTC), which helps us understand the switching behavior and calculate the propagation delay.
+
+- Now, we will outline the steps to obtain the VTC of a static CMOS inverter.
+
+- Assumption: Consider a long-channel device with Vdd = 2 V.
+
+<img width="994" height="571" alt="image" src="https://github.com/user-attachments/assets/6c2e9925-b9d6-44ee-aa28-00556cdb3e9c" />
+
+- Since Vgsp = Vin − Vdd, we can rewrite it as Vin = Vgsp + Vdd, allowing us to express all voltages in terms of Vin and Vout.
+
+- The objective is to represent both NMOS and PMOS currents using Vin and Vout so that the analysis becomes consistent.
+
+- We then plot the PMOS characteristics in terms of Idsn, where the corresponding Vin values are obtained from the converted Vgsp values.
+
+- The graph is plotted accordingly, using the Vin values derived from the relation shown in the table.
+
+<img width="650" height="325" alt="image" src="https://github.com/user-attachments/assets/ef552dc0-f0d0-4621-8f68-6ab438b67e52" />
+
+## Day2_lec25 : Step2 & Step3 – Convert PMOS and NMOS drain-source-voltage to vout
+
+- We now express Vdsp in terms of the output voltage, using the relation Vdsp = Vout − Vdd.
+
+- Rearranging this equation allows us to rewrite the PMOS drain-to-source voltage as a function of Vout.
+
+- To obtain Vout from Vdsp, we effectively shift the value by Vdd toward the left-hand side.
+
+<img width="988" height="330" alt="image" src="https://github.com/user-attachments/assets/9ba363e2-ccde-4b94-9e00-31da3f88bba9" />
+
+-When Vout = 2 V (with Vdd = 2 V), we get Vdsp = 0 V.
+
+-In this condition, the PMOS current becomes zero, and the output capacitor is fully discharged.
+
+-This situation is valid when the PMOS operates together with the NMOS in a CMOS inverter configuration.
+
+- Consider another case where Vout = 0 V.
+
+- Here, Vdsp = −2 V (since Vdsp = Vout − Vdd and Vdd = 2 V).
+
+- At this point, for different values of Vin, a finite current flows through the PMOS.
+
+- Since Vout = 0 V indicates that the output capacitor is completely discharged, a charging current is required to pull the output high.
+
+- The variation of this current with respect to Vin gives the load curve of the PMOS.
+
+<img width="383" height="307" alt="image" src="https://github.com/user-attachments/assets/17f0a15c-d09b-411e-9b2d-d838a7bab760" />
+
+<img width="250" height="183" alt="image" src="https://github.com/user-attachments/assets/71880c19-7d98-4377-b170-0e7ac0f2ff01" />
+
+- Next, we derive the load curve for the NMOS transistor using the given equations.
+
+- For NMOS, the voltage relationships are straightforward:
+
+  Vgsn = Vin
+
+  Vdsn = Vout
+
+- Since both voltages are directly expressed in terms of Vin and Vout, plotting the NMOS characteristics becomes simple.
+
+- Using these relations, we can directly obtain the corresponding current–voltage graphs for the NMOS.
+
+<img width="985" height="567" alt="image" src="https://github.com/user-attachments/assets/87aa34d2-f285-4e0e-8467-3b35458c517e" />
+
+## Day2_lec26 :  Step4 – Merge PMOS – NMOS load curves and plot VTC
+
+- We now combine the NMOS and PMOS load curves to obtain the Voltage Transfer Characteristics (VTC) of the CMOS inverter.
+
+- This is done by superimposing both load curves on the same graph.
+
+- The purpose of superimposing them is to determine the common operating point where the currents of NMOS and PMOS are equal.
+
+- This intersection point gives the relationship between Vin and Vout, which forms the VTC of the CMOS inverter.
+
+<img width="859" height="288" alt="image" src="https://github.com/user-attachments/assets/d1719ee1-d9cb-4f27-bb31-c9ebe256f1f3" />
+
+- The operating range of both Vin and Vout is from 0 V to 2 V.
+
+- When Vin = 0 V:
+ Vout = 2 V
+ NMOS operates in cut-off region
+ PMOS operates in linear region
+
+- When Vin = 0.5 V:
+ 1.5 V < Vout < 2 V
+ NMOS is in saturation region
+ PMOS remains in linear region
+
+- When Vin = 1 V:
+ 0.5 V < Vout < 1.5 V
+ Both NMOS and PMOS operate in the saturation region
+
+- When Vin = 1.5 V:
+ 0 V < Vout < 0.5 V
+ NMOS is in the linear region
+ PMOS is in the saturation region
+
+- When Vin = 2 V:
+ Vout = 0 V
+ NMOS operates in the linear region
+ PMOS is in cut-off region
+
+<img width="976" height="552" alt="image" src="https://github.com/user-attachments/assets/202c556f-5ba8-4467-95d4-eb8d54c16529" />
