@@ -936,4 +936,172 @@ nomenclature:
 
 <img width="501" height="414" alt="image" src="https://github.com/user-attachments/assets/413eed76-e77a-4574-9baa-65da3b5feb5a" />
 
-##  Day4_Lec40 : Noise margin variation with respect to PMOS width
+##  Day4_Lec40 :  Sky130 Noise margin labs
+
+- Noise Margin Calculation using SPICE (Modified Example)
+
+- W/L ratio: (W/L)p / (W/L)n ≈ 2.8
+
+- DC Sweep: Vin from 0 V to 1.8 V with a step size of 0.01 V
+
+- From the VTC curve, identify the points where the slope (dVout/dVin) = −1, and project them to the axes to obtain:
+
+   X-axis → VIL and VIH
+   Y-axis → VOH and VOL
+
+  <img width="882" height="434" alt="image" src="https://github.com/user-attachments/assets/95687978-1170-4d11-95d5-e4ec6a35cd79" />
+
+- Assume extracted values (example case):
+   VOH ≈ 1.72 V
+   VIH ≈ 0.99 V
+   VIL ≈ 0.78 V
+   VOL ≈ 0.10 V
+
+- Noise Margin High (NMH) = VOH − VIH ≈ 0.73 V
+
+- Noise Margin Low (NML) = VIL − VOL ≈ 0.68 V
+
+- Since both NMH and NML are reasonably large and close in value, this confirms good noise immunity and balanced inverter performance.
+
+## CMOS power supply and device variation robustness evaluation
+## Static behavior evaluation – CMOS inverter robustness – Power supply variation
+## Day5_Lec41 : Smart SPICE simulation for power supply variations
+
+- We studied how the CMOS inverter behaves when the power supply (VDD) is gradually reduced.
+
+- The PMOS is kept wider than the NMOS to balance mobility differences and maintain proper switching symmetry, with a load capacitance of 10 fF.
+
+- In SPICE, VDD is swept from 2.5 V down to 0.5 V in steps of 0.5 V.
+
+<img width="861" height="501" alt="image" src="https://github.com/user-attachments/assets/a42a166c-6b59-42aa-80b7-e63b234a2cf4" />
+
+- As the supply voltage decreases, the overall VTC shape remains similar, and the switching behavior is preserved.
+
+- Even at 0.5 V, the inverter continues to function, showing that the CMOS inverter is highly robust under power scaling.
+
+<img width="698" height="524" alt="image" src="https://github.com/user-attachments/assets/fe96a410-b59f-4403-8fa9-769f01078180" />
+
+## Day5_Lec42 : Advantages and disadvantages using low supply voltage
+Advantages:
+ - Higher Gain:
+   
+<img width="910" height="515" alt="image" src="https://github.com/user-attachments/assets/09de5d54-accb-491d-9efe-47ab5440f163" />
+
+<img width="906" height="500" alt="image" src="https://github.com/user-attachments/assets/41924ce0-e015-4347-a9c4-fd285bdafaa7" />
+
+  A 0.5 V supply shows nearly 50% higher gain compared to operation at 2.5 V.
+
+  Reducing the supply voltage increases the steepness of the normalized transition region.
+
+  This means the inverter transitions more sharply between logic levels when viewed relative to VDD.
+
+  As a result, even at lower supply voltages, the switching characteristic remains strong and well-defined.
+
+
+
+- Lower Energy Consumption:
+  
+<img width="905" height="499" alt="image" src="https://github.com/user-attachments/assets/980ff609-36f8-4e10-9c46-b3e15fee2a11" />
+
+<img width="899" height="497" alt="image" src="https://github.com/user-attachments/assets/1aaf017b-e6b5-4be3-8b32-9195b8cfc569" />
+
+- The switching energy is proportional to C · VDD², so reducing the supply voltage significantly lowers the energy required for charging and discharging.
+
+- Reducing VDD from 2.5 V to 0.5 V cuts the switching energy by about 90%, making low-VDD operation ideal for low-power designs.
+
+- Disadvantages:
+    At low supply voltages, the charging and discharging of the load capacitor becomes slower due to reduced drive current.
+    As a result, both rise delay and fall delay increase, leading to degraded overall circuit performance.
+
+## Day5_Lec43 : Sky130 Supply Variation Labs
+
+- The supply voltage is reduced from 1.8 V to 0.8 V in steps of 0.2 V, completing six iterations.
+
+   At VDD = 0.8 V, |Gain| ≈ 9.4.
+   At VDD = 1.0 V, |Gain| ≈ 8.95
+   At VDD = 1.2 V, |Gain| ≈ 8.60
+   At VDD = 1.4 V, |Gain| ≈ 8.25
+   At VDD = 1.6 V, |Gain| ≈ 7.95
+   At VDD = 1.8 V, |Gain| ≈ 7.6.
+
+- The higher gain at lower VDD shows that supply scaling increases the magnitude of inverter gain.
+
+<img width="905" height="447" alt="image" src="https://github.com/user-attachments/assets/c4616850-ac83-49c8-95c5-ab1874850649" />
+
+## Static behaviour evaluation-CMOS inverter robustness-Device variation
+## Day5_Lec44 : Sources of variation – Etching process
+
+<img width="904" height="437" alt="image" src="https://github.com/user-attachments/assets/63434fe5-b583-4660-bfa6-81f147b31482" />
+
+
+- Device Dimensions and Fabrication Variations
+
+  In a CMOS inverter, the channel length (L) is defined by the polysilicon gate, and the channel width (W) is set by its overlap with the diffusion region.
+
+  Manufacturing imperfections in lithography and etching introduce small variations in effective W and L.
+
+  These variations impact threshold voltage, drive strength, and propagation delay, making robustness to process variation essential.
+
+<img width="896" height="485" alt="image" src="https://github.com/user-attachments/assets/53ef2474-08d6-4f51-9d95-7041deb87b40" />
+
+<img width="369" height="465" alt="image" src="https://github.com/user-attachments/assets/3d426d01-b8f8-4dee-9163-e7498fcc0968" />
+
+- Technology Node and Scaling
+
+  The technology node is determined by the minimum gate length (e.g., 180 nm, 65 nm).
+
+  As the node scales down, device density and switching speed increase, but sensitivity to variations also becomes more significant.
+
+<img width="899" height="474" alt="image" src="https://github.com/user-attachments/assets/f8a755ba-c5d7-4cb1-a26d-eeded6c1f448" />
+
+- Inverter Chain Effects
+
+  In an inverter chain, local process variations (dimension changes, impurity fluctuations, edge roughness) cause slight differences in each stage.
+
+  These variations accumulate across stages, affecting delay, switching threshold, and overall timing predictability.
+
+  ## Day5_Lec45 : Sources of variation – oxide thickness
+
+  <img width="896" height="478" alt="image" src="https://github.com/user-attachments/assets/f4a07d25-17c1-402c-99d5-228b5320c69c" />
+
+- Oxide Thickness (tox) Variation
+
+    Oxide thickness (tox) is a significant source of process variation in CMOS devices.
+
+    A thinner oxide increases Cox, lowers effective channel resistance, and increases drive current.
+
+    A thicker oxide decreases Cox, raises effective resistance, and weakens drive current.
+
+    In a CMOS cross-section, the gate oxide lies directly beneath the polysilicon (or metal) gate, and in practice, its thickness is not perfectly uniform.
+
+  <img width="608" height="503" alt="image" src="https://github.com/user-attachments/assets/7e567b92-d060-443c-abc9-daf1c3914bc5" />
+
+
+- Impact on Inverter Chains
+
+    Variations in tox cause small shifts in threshold voltage, drain current, and propagation delay, which accumulate along an inverter chain.
+
+   Middle inverters may experience partial averaging of variations, while edge inverters often show higher variability due to layout surroundings.
+
+   Despite these effects, CMOS inverters continue to operate correctly, showing strong robustness to oxide-thickness variations.
+
+   <img width="898" height="423" alt="image" src="https://github.com/user-attachments/assets/3ef9a01b-969a-454e-9fb4-766ed377e8b5" />
+
+   ## Day5_Lec46 : Sources of variation – oxide thickness
+
+  - Here, we intentionally apply extreme variations in PMOS and NMOS widths to check whether the inverter’s DC characteristics remain stable.
+
+- The objective is to confirm that even under significant device imbalance, the CMOS inverter continues to function reliably.
+
+<img width="896" height="504" alt="image" src="https://github.com/user-attachments/assets/7ffe8f8d-1bb2-4474-a9fb-a90b7cc86d34" />
+
+- Case 1: Strong PMOS (1.875 µm), Weak NMOS (0.375 µm).
+
+- Case 2: Weak PMOS (0.375 µm), Strong NMOS (1.875 µm).
+
+- Widths are swept from 0.375 µm to 1.875 µm in 0.375 µm steps (5 iterations).
+
+- For each width combination, a DC sweep is performed in SPICE, generating multiple VTC curves for comparison.
+
+<img width="534" height="416" alt="image" src="https://github.com/user-attachments/assets/e62bda3f-9b7d-409d-9304-c4484d1d2ecc" />
+
