@@ -344,13 +344,11 @@ Total netlist code for the 2 components is:
    
 all.spice file:
 
-<img width="1596" height="930" alt="image" src="https://github.com/user-attachments/assets/7c37814f-1804-49d6-b17e-ad75a05f671e" /><br/>
+<img width="1596" height="930" alt="image" src="https://github.com/user-attachments/assets/7c37814f-1804-49d6-b17e-ad75a05f671e" /> 
 
 sky130 file:
 
-<img width="1588" height="937" alt="image" src="https://github.com/user-attachments/assets/d1306f0c-5c58-4862-a40f-0f3e0bc6a1ab" /><br/>
-
-Note: From now on, I will be using a Virtual Machine for the simulations, as it is more convenient and easier to work with.
+<img width="1588" height="937" alt="image" src="https://github.com/user-attachments/assets/d1306f0c-5c58-4862-a40f-0f3e0bc6a1ab" />
 
 ## Day2: Velocity saturation and basics of CMOS inverter VTC
 ## SPICE simulation for lower nodes and velocity saturation effect
@@ -1139,8 +1137,6 @@ Advantages:
   - Even when sweeping from strong PMOS to weak PMOS and weak NMOS to strong NMOS conditions, the CMOS inverter consistently maintains correct inversion behavior, preserves proper logic levels, and retains sufficient noise margins, demonstrating strong robustness to device variations.
 
     ## Day5_Lec48 : Sky130 Device Variation Labs
-
- <img width="709" height="332" alt="image" src="https://github.com/user-attachments/assets/4b71a6a2-cb71-4517-b500-848520d29b61" />
 
 <img width="780" height="409" alt="image" src="https://github.com/user-attachments/assets/61ce5160-463b-41e6-b6b4-bd1ef1be2386" />
 
