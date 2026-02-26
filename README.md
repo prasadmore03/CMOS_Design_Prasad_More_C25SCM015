@@ -1087,9 +1087,9 @@ Advantages:
 
    <img width="898" height="423" alt="image" src="https://github.com/user-attachments/assets/3ef9a01b-969a-454e-9fb4-766ed377e8b5" />
 
-   ## Day5_Lec46 : Sources of variation – oxide thickness
+ ## Day5_Lec46 : Sources of variation – oxide thickness
 
-  - Here, we intentionally apply extreme variations in PMOS and NMOS widths to check whether the inverter’s DC characteristics remain stable.
+- Here, we intentionally apply extreme variations in PMOS and NMOS widths to check whether the inverter’s DC characteristics remain stable.
 
 - The objective is to confirm that even under significant device imbalance, the CMOS inverter continues to function reliably.
 
@@ -1105,3 +1105,48 @@ Advantages:
 
 <img width="534" height="416" alt="image" src="https://github.com/user-attachments/assets/e62bda3f-9b7d-409d-9304-c4484d1d2ecc" />
 
+  ## Day5_Lec47 : Conclusion
+  
+  - In earlier analysis, CMOS inverter robustness was examined by sweeping PMOS and NMOS widths from strong–weak to weak–strong combinations using SPICE simulations, and performance stability was evaluated mainly through switching threshold (Vm) and noise margin measurements.
+
+<img width="867" height="466" alt="image" src="https://github.com/user-attachments/assets/3ffa0349-9dd2-41a4-b203-58b72549a03a" />
+
+- Switching Threshold Variation
+
+  The switching threshold (Vm) is obtained by drawing a 45° line (Vin = Vout) on the VTC and finding the intersection point.
+
+  Under extreme width variations, Vm shifts roughly from 0.2 V to 1.4 V, but this shift is still acceptable relative to the supply voltage.
+
+  Despite large dimensional changes, the overall VTC shape remains preserved.
+
+  The inverter continues to perform correct logic inversion; only the switching point shifts, confirming stable CMOS operation under device variation.
+
+  <img width="872" height="467" alt="image" src="https://github.com/user-attachments/assets/22fcead8-2649-4c3a-a326-71f2c58e1f04" />
+
+- Noise Margin Analysis
+
+   Noise margins were evaluated under extreme PMOS and NMOS width variations.
+
+   The observed values were approximately:
+
+    High-level noise margin (NMH) ≈ 0.4 V
+    Low-level noise margin (NML) ≈ 0.3 V
+
+  These margins are sufficiently large to tolerate supply noise, ground bounce, and process variations.
+
+  In all cases, the logic 0 and logic 1 regions remain clearly defined, and the inverter continues to reject noise effectively.
+
+  - Even when sweeping from strong PMOS to weak PMOS and weak NMOS to strong NMOS conditions, the CMOS inverter consistently maintains correct inversion behavior, preserves proper logic levels, and retains sufficient noise margins, demonstrating strong robustness to device variations.
+
+    ## Day5_Lec48 : Sky130 Device Variation Labs
+
+ <img width="709" height="332" alt="image" src="https://github.com/user-attachments/assets/4b71a6a2-cb71-4517-b500-848520d29b61" />
+
+<img width="780" height="409" alt="image" src="https://github.com/user-attachments/assets/61ce5160-463b-41e6-b6b4-bd1ef1be2386" />
+
+- We now perform SPICE simulations to study the effect of device variations on inverter behavior.
+
+- In this case, the PMOS width is much larger than the NMOS width, representing a strong PMOS and weak NMOS condition.
+
+- Due to the stronger pull-up network, the switching threshold (Vm) shifts toward the right (higher input voltage).
+    
