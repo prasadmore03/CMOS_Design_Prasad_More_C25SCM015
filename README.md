@@ -1,4 +1,4 @@
-<img width="907" height="500" alt="image" src="https://github.com/user-attachments/assets/4a17d09d-9b8a-49b3-8fea-e44c24f501e7" /># CMOS_Design_Prasad_More_C25SCM015
+# CMOS_Design_Prasad_More_C25SCM015
 
 ## 1) Github codespaces for the CMOS circuit design on cloud with GUI and VNC
 stepwise guidlines to use this platform are as follows:
@@ -838,4 +838,102 @@ nomenclature:
 
 <img width="914" height="517" alt="image" src="https://github.com/user-attachments/assets/d4afd05b-e9a6-4c98-843e-d6dcfdab572e" />
 
+## CMOS Noise Margin robustness evaluation
+## Static behaviour evaluation-CMOS inverter robustness-Noise Margin
+## Day4_Lec36 : Introduction to noise margin
 
+- We now study the robustness of the CMOS inverter with respect to Noise Margin and evaluate how well it tolerates disturbances.
+
+- Noise Margin is defined as the maximum amount of unwanted electrical noise that can be superimposed on the input signal without causing an incorrect logic output.
+
+- It indicates the reliability of a logic gate in distinguishing between valid logic ‘0’ and logic ‘1’.
+
+- In an ideal inverter, an input of 0 produces an output of 1, and an input of 1 produces an output of 0.
+
+- For such an ideal case, the transition between logic states is instantaneous, meaning the slope of the switching characteristic is infinite.
+
+<img width="269" height="276" alt="image" src="https://github.com/user-attachments/assets/c63be136-30cc-4339-8c00-a6941a4231a0" />
+
+- In practical circuits, the switching slope is not infinite.
+
+- Due to the presence of parasitic resistances and capacitances, the output cannot change instantaneously.
+
+- These parasitic elements introduce propagation delay during switching.
+
+- As a result, the VTC transition region has a finite slope instead of an abrupt vertical transition.
+
+<img width="587" height="403" alt="image" src="https://github.com/user-attachments/assets/2524c2ca-1fd7-4ff7-890d-dde922a699d0" />
+
+- When the input voltage lies between 0 and VIL (Input Low Voltage), the output remains at VOH (Output High Voltage).
+
+- In this region, the inverter correctly interprets the signal as logic ‘0’ and produces a logic ‘1’ at the output.
+
+- When the input voltage lies between VIH (Input High Voltage) and Vdd, the output switches to VOL (Output Low Voltage).
+
+- In this case, the inverter recognizes the input as logic ‘1’ and generates a logic ‘0’ at the output.
+
+## Day4_Lec37 : Noise margin voltage parameters
+
+- The CMOS inverter VTC divides the input voltage into three regions: logic 0 (0 to VIL), transition (VIL to VIH), and logic 1 (VIH to VDD).
+
+- When the input is between 0 and VIL, the output remains at VOH (logic high).
+
+- When the input is between VIH and VDD, the output settles at VOL (logic low).
+
+- Due to practical non-idealities, VOH is slightly less than VDD and VOL is slightly greater than 0 V.
+
+- For proper cascading of logic gates, the conditions VOL < VIL  & VIH < VOH must be satisfied.
+
+- The VTC transition region has a finite negative slope (close to −1 near the switching point) because of parasitic resistances and capacitances.
+
+<img width="634" height="390" alt="image" src="https://github.com/user-attachments/assets/85238c05-ecc6-436f-8ef0-9cceab125758" />
+
+## Day4_Lec38 : Noise margin equation and summary
+
+- By plotting the voltage levels on a 1D graph, we can clearly identify the Noise Margins of the CMOS inverter.
+
+- Noise Margin High (NMH) is defined as NMH = VOH − VIH. It represents the maximum noise voltage that can be tolerated when the signal is at logic ‘1’ without causing an incorrect interpretation.
+
+- Noise Margin Low (NML) is defined as NML = VIL − VOL. It indicates the maximum noise that can be tolerated when the signal is at logic ‘0’.
+
+- The region between VIL and VIH is the undefined (transition) region, where the logic level is uncertain and signals may be misinterpreted.
+
+- To ensure reliable operation, the circuit should avoid this undefined region, as noise margin reflects the tolerance of the circuit to noise, glitches, or voltage disturbances.
+
+  <img width="573" height="391" alt="image" src="https://github.com/user-attachments/assets/877f1f89-f542-40c2-b398-b8211008067a" />
+
+<img width="642" height="371" alt="image" src="https://github.com/user-attachments/assets/587df44d-1c99-48ce-82f5-d80cf54f589d" />
+
+## Day4_Lec39 : Noise margin variation with respect to PMOS width
+
+- To evaluate robustness, we analyze how noise margins vary with changes in PMOS width, keeping NMOS sizing as reference. The key points are obtained from the VTC by locating where the slope equals −1 and extending tangents to intersect the voltage axes.
+
+<img width="900" height="502" alt="image" src="https://github.com/user-attachments/assets/3b861754-fa42-49ea-8e00-4a9c9d8d01bd" />
+
+- The larger the noise margin, the stronger and more noise-immune the CMOS inverter becomes.
+
+  <img width="907" height="508" alt="image" src="https://github.com/user-attachments/assets/10937472-c6ae-4637-b50f-609f2f345ccf" />
+
+- SPICE simulations are used to study noise margins under different PMOS/NMOS W/L ratios, by examining the DC transfer curve and extracting the corresponding voltage limits.
+
+- Increasing the PMOS width generally improves Noise Margin High (NMH); for example, NMH increases from about 0.3 V to 0.42 V when PMOS size is scaled to 5× that of NMOS.
+
+  <img width="897" height="510" alt="image" src="https://github.com/user-attachments/assets/9341a6c2-e7f8-4e06-8a44-a3d7bc6114f8" />
+
+-However, beyond roughly 3× W/L of NMOS, the Noise Margin Low (NML) shows a slight reduction, indicating a trade-off.
+
+<img width="898" height="501" alt="image" src="https://github.com/user-attachments/assets/70829805-63a6-4f9a-8c91-6abae976b43d" />
+
+-For cases such as (W/L)p = 4×(W/L)n and 5×(W/L)n, the noise margins remain nearly the same, showing that further width increase does not significantly change performance.
+
+- This behavior confirms the robustness of the CMOS inverter, as moderate fabrication variations in sizing cause only small changes in noise margins.
+
+<img width="536" height="216" alt="image" src="https://github.com/user-attachments/assets/ad845528-c215-42ce-b804-e2c46ab61aa6" />
+
+- Hence, CMOS inverters are well suited for digital design, where small margin variations (±5%) do not affect functionality, while the transition region defines the boundary between digital and analog operation.
+
+<img width="532" height="414" alt="image" src="https://github.com/user-attachments/assets/5a97982e-37d2-41a2-b671-f68bb710f79a" />
+
+<img width="501" height="414" alt="image" src="https://github.com/user-attachments/assets/413eed76-e77a-4574-9baa-65da3b5feb5a" />
+
+##  Day4_Lec40 : Noise margin variation with respect to PMOS width
