@@ -4,7 +4,7 @@
 ## Table of contents:
 - [Github codespaces for the CMOS circuit design on cloud with GUI and VNC](https://github.com/prasadmore03/CMOS_Design_Prasad_More_C25SCM015/blob/main/README.md#1-github-codespaces-for-the-cmos-circuit-design-on-cloud-with-gui-and-vnc)
 
-
+- [](#)
 
 ## 1) Github codespaces for the CMOS circuit design on cloud with GUI and VNC
 stepwise guidlines to use this platform are as follows:
@@ -34,6 +34,9 @@ stepwise guidlines to use this platform are as follows:
 
 - So with this we are ready with Ubantu virtual environment and we can start creating designs and visualize the outputs in ngspice application.
 
+
+## Basics of NMOS Drain Current(Id) vs Drain-to-source Voltage(Vds)
+## Introduction to Circuit Design and Spice Simulations
 ## 2) Day1_Lec0: Why do we need Circuit Design and SPICE Simulations:
 ### Circuit Design:
 - CMOS circuit design is the process of creating electronic circuits using complementary pairs of pMOS and nMOS transistors to implement logic functions.<br/>
