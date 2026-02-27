@@ -4,9 +4,11 @@
 ## Table of contents:
 - [Github codespaces for the CMOS circuit design on cloud with GUI and VNC](https://github.com/prasadmore03/CMOS_Design_Prasad_More_C25SCM015/blob/main/README.md#1-github-codespaces-for-the-cmos-circuit-design-on-cloud-with-gui-and-vnc)
 
-- [Day1: Basics of NMOS Drain Current(Id) vs Drain-to-source Voltage(Vds)](https://github.com/prasadmore03/CMOS_Design_Prasad_More_C25SCM015/blob/main/README.md#basics-of-nmos-drain-currentid-vs-drain-to-source-voltagevds)
+- [Day1: Introduction to Circuit Design and Spice Simulations](https://github.com/prasadmore03/CMOS_Design_Prasad_More_C25SCM015/blob/main/README.md#introduction-to-circuit-design-and-spice-simulations)
 
 - [Day1: NMOS resistive region and saturation region of operation](https://github.com/prasadmore03/CMOS_Design_Prasad_More_C25SCM015/blob/main/README.md#nmos-resistive-region-and-saturation-region-of-operation)
+
+- [Day1 : Introduction to SPICE](https://github.com/prasadmore03/CMOS_Design_Prasad_More_C25SCM015/blob/main/README.md#introduction-to-spice)
 
 - [Day2: SPICE simulation for lower nodes and velocity saturation effect](https://github.com/prasadmore03/CMOS_Design_Prasad_More_C25SCM015/blob/main/README.md#spice-simulation-for-lower-nodes-and-velocity-saturation-effect)
 
@@ -16,7 +18,7 @@
 
 - [Day3 : Static behaviour evaluation-CMOS inverter robustness-Switching Threshold](https://github.com/prasadmore03/CMOS_Design_Prasad_More_C25SCM015/blob/main/README.md#static-behaviour-evaluation-cmos-inverter-robustness-switching-threshold)
 
-- [Da4: Static behaviour evaluation-CMOS inverter robustness-Noise Margin](https://github.com/prasadmore03/CMOS_Design_Prasad_More_C25SCM015/blob/main/README.md#static-behaviour-evaluation-cmos-inverter-robustness-noise-margin)
+- [Day4: Static behaviour evaluation-CMOS inverter robustness-Noise Margin](https://github.com/prasadmore03/CMOS_Design_Prasad_More_C25SCM015/blob/main/README.md#static-behaviour-evaluation-cmos-inverter-robustness-noise-margin)
 
 - [Day5 : Static behavior evaluation – CMOS inverter robustness – Power supply variation](https://github.com/prasadmore03/CMOS_Design_Prasad_More_C25SCM015/blob/main/README.md#static-behavior-evaluation--cmos-inverter-robustness--power-supply-variation)
 
