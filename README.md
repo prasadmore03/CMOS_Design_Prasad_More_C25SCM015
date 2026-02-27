@@ -4,8 +4,25 @@
 ## Table of contents:
 - [Github codespaces for the CMOS circuit design on cloud with GUI and VNC](https://github.com/prasadmore03/CMOS_Design_Prasad_More_C25SCM015/blob/main/README.md#1-github-codespaces-for-the-cmos-circuit-design-on-cloud-with-gui-and-vnc)
 
-- [Basics of NMOS Drain Current(Id) vs Drain-to-source Voltage(Vds)](https://github.com/prasadmore03/CMOS_Design_Prasad_More_C25SCM015/blob/main/README.md#basics-of-nmos-drain-currentid-vs-drain-to-source-voltagevds)
-## 1) Github codespaces for the CMOS circuit design on cloud with GUI and VNC
+- [Day1: Basics of NMOS Drain Current(Id) vs Drain-to-source Voltage(Vds)](https://github.com/prasadmore03/CMOS_Design_Prasad_More_C25SCM015/blob/main/README.md#basics-of-nmos-drain-currentid-vs-drain-to-source-voltagevds)
+
+- [Day1: NMOS resistive region and saturation region of operation](https://github.com/prasadmore03/CMOS_Design_Prasad_More_C25SCM015/blob/main/README.md#nmos-resistive-region-and-saturation-region-of-operation)
+
+- [Day2: SPICE simulation for lower nodes and velocity saturation effect](https://github.com/prasadmore03/CMOS_Design_Prasad_More_C25SCM015/blob/main/README.md#spice-simulation-for-lower-nodes-and-velocity-saturation-effect)
+
+- [Day2: CMOS voltage transfer characteristics (VTC)](https://github.com/prasadmore03/CMOS_Design_Prasad_More_C25SCM015/blob/main/README.md#cmos-voltage-transfer-characteristics-vtc)
+
+- [Day3: Voltage transfer characteristics - SPICE simulations](https://github.com/prasadmore03/CMOS_Design_Prasad_More_C25SCM015/blob/main/README.md#voltage-transfer-characteristics---spice-simulations)
+
+- [Day3 : Static behaviour evaluation-CMOS inverter robustness-Switching Threshold](https://github.com/prasadmore03/CMOS_Design_Prasad_More_C25SCM015/blob/main/README.md#static-behaviour-evaluation-cmos-inverter-robustness-switching-threshold)
+
+- [Da4: Static behaviour evaluation-CMOS inverter robustness-Noise Margin](https://github.com/prasadmore03/CMOS_Design_Prasad_More_C25SCM015/blob/main/README.md#static-behaviour-evaluation-cmos-inverter-robustness-noise-margin)
+
+- [Day5 : Static behavior evaluation – CMOS inverter robustness – Power supply variation](https://github.com/prasadmore03/CMOS_Design_Prasad_More_C25SCM015/blob/main/README.md#static-behavior-evaluation--cmos-inverter-robustness--power-supply-variation)
+
+- [Day5 : Static behaviour evaluation-CMOS inverter robustness-Device variation](https://github.com/prasadmore03/CMOS_Design_Prasad_More_C25SCM015/blob/main/README.md#static-behaviour-evaluation-cmos-inverter-robustness-device-variation)
+
+## Github codespaces for the CMOS circuit design on cloud with GUI and VNC
 stepwise guidlines to use this platform are as follows:
 ### Step1:
 - Start the codespace: open new directory where you want to create a cloud-based Ubuntu environment for you, github will make one performing the following stpes.
@@ -36,7 +53,7 @@ stepwise guidlines to use this platform are as follows:
 
 ## Basics of NMOS Drain Current(Id) vs Drain-to-source Voltage(Vds)
 ## Introduction to Circuit Design and Spice Simulations
-## 2) Day1_Lec0: Why do we need Circuit Design and SPICE Simulations:
+## Day1_Lec0: Why do we need Circuit Design and SPICE Simulations:
 ### Circuit Design:
 - CMOS circuit design is the process of creating electronic circuits using complementary pairs of pMOS and nMOS transistors to implement logic functions.<br/>
 <img width="296" height="298" alt="image" src="https://github.com/user-attachments/assets/0542c00a-1842-4c68-850a-7f4ce44917ce" /> <br/>
